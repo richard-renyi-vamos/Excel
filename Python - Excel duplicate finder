@@ -1,0 +1,25 @@
+import pandas as pd
+
+# Load the first Excel table into a Pandas DataFrame
+df1 = pd.read_excel("table1.xlsx")
+
+# Load the second Excel table into a Pandas DataFrame
+df2 = pd.read_excel("table2.xlsx")
+
+# Check for duplicates in the first table
+duplicates1 = df1[df1.duplicated()]
+
+# Check for duplicates in the second table
+duplicates2 = df2[df2.duplicated()]
+
+# Check for duplicates between the two tables
+duplicates_both = pd.concat([duplicates1, duplicates2]).drop_duplicates()
+
+# Print the duplicates found
+if len(duplicates_both) == 0:
+    print("No duplicates found.")
+else:
+    print("Duplicates found:")
+    print(duplicates_both)
+
+# CREATED WITH THE HELP OF OPEN-AI CHAT GPT: https://chat.openai.com/chat
