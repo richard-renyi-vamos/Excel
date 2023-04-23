@@ -1,0 +1,22 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the data from the Excel file
+data = pd.read_excel('data.xlsx')
+
+# Extract the x and y data from the DataFrame
+x = data['Category']
+y = data['Value']
+
+# Create the bar chart
+plt.bar(x, y)
+
+# Add labels and title
+plt.xlabel('Category')
+plt.ylabel('Value')
+plt.title('Bar Chart')
+
+# Show the chart
+plt.show()
+
+# CREATED WITH THE HELP OF OPEN-AI CHAT GPT: https://chat.openai.com/chat
