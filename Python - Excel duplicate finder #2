@@ -1,0 +1,19 @@
+import pandas as pd
+
+# read the first Excel file
+df1 = pd.read_excel('file1.xlsx')
+
+# read the second Excel file
+df2 = pd.read_excel('file2.xlsx')
+
+# merge the two dataframes and find the duplicates
+duplicates = pd.merge(df1, df2, how='inner')
+
+# output the duplicates to a new Excel file
+duplicates.to_excel('duplicates.xlsx', index=False)
+
+# In this script, we first use the pd.read_excel() function to read in the two Excel files as Pandas dataframes (df1 and df2). 
+# We then merge the two dataframes using the pd.merge() function and specifying how='inner' to find the rows that appear in both dataframes (i.e., the duplicates). 
+# Finally, we use the to_excel() function to output the duplicates to a new Excel file named duplicates.xlsx, without including the index column. 
+# You can adjust the file names and paths as necessary for your specific use case.
+# CREATED WITH THE HELP OF OPEN-AI CHAT GPT: https://chat.openai.com/chat
