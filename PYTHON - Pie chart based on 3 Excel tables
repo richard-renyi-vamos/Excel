@@ -1,0 +1,30 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Define the file paths for the Excel files
+file1 = "path/to/file1.xlsx"
+file2 = "path/to/file2.xlsx"
+file3 = "path/to/file3.xlsx"
+
+# Read the Excel files
+df1 = pd.read_excel(file1)
+df2 = pd.read_excel(file2)
+df3 = pd.read_excel(file3)
+
+# Extract relevant data for the pie chart
+data1 = df1['Column1'].sum()  # Replace 'Column1' with the actual column name from file1
+data2 = df2['Column2'].sum()  # Replace 'Column2' with the actual column name from file2
+data3 = df3['Column3'].sum()  # Replace 'Column3' with the actual column name from file3
+
+# Create the pie chart
+labels = ['File 1', 'File 2', 'File 3']
+sizes = [data1, data2, data3]
+plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+
+# Add a title to the chart
+plt.title('Distribution of Data from Excel Files')
+
+# Display the chart
+plt.show()
+
+# CREATED WITH THE HELP OF OPEN-AI CHAT GPT: https://chat.openai.com/chat
