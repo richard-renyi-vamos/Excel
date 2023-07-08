@@ -1,0 +1,24 @@
+import csv
+
+def add_email_to_address_book(email, name, address_book_file):
+    with open(address_book_file, 'a', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow([email, name])
+    print(f"Email '{email}' added to the address book.")
+
+def main():
+    address_book_file = 'address_book.csv'
+
+    while True:
+        email = input("Enter email address (or 'q' to quit): ")
+        if email.lower() == 'q':
+            break
+
+        name = input("Enter name: ")
+
+        add_email_to_address_book(email, name, address_book_file)
+
+if __name__ == '__main__':
+    main()
+
+# CREATED WITH THE HELP OF OPEN-AI CHAT GPT: https://chat.openai.com/chat
