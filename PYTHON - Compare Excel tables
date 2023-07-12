@@ -1,0 +1,24 @@
+import pandas as pd
+
+def compare_excel_tables(file1, file2, sheet1, sheet2):
+    # Read the Excel files into pandas DataFrames
+    df1 = pd.read_excel(file1, sheet_name=sheet1)
+    df2 = pd.read_excel(file2, sheet_name=sheet2)
+
+    # Perform the comparison
+    comparison_result = df1.equals(df2)
+
+    if comparison_result:
+        print("The tables are identical.")
+    else:
+        print("The tables are different.")
+
+if __name__ == "__main__":
+    file1 = "path/to/file1.xlsx"  # Replace with the actual file path of the first Excel file
+    file2 = "path/to/file2.xlsx"  # Replace with the actual file path of the second Excel file
+    sheet1 = "Sheet1"  # Replace with the actual sheet name in the first Excel file
+    sheet2 = "Sheet1"  # Replace with the actual sheet name in the second Excel file
+
+    compare_excel_tables(file1, file2, sheet1, sheet2)
+
+# CREATED WITH THE HELP OF OPEN-AI CHAT GPT: https://chat.openai.com/chat
