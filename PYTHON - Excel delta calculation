@@ -1,0 +1,23 @@
+import pandas as pd
+
+def calculate_delta(sheet1, sheet2, output_file):
+    df1 = pd.read_excel(sheet1, engine='openpyxl')
+    df2 = pd.read_excel(sheet2, engine='openpyxl')
+    
+    delta_df = df2.copy()
+    for col in df2.columns:
+        if col in df1.columns:
+            delta_df[col] = df2[col] - df1[col]
+    
+    delta_df.to_excel(output_file, index=False, engine='openpyxl')
+
+if __name__ == "__main__":
+    sheet1_path = "path/to/sheet1.xlsx"  # Update with the path to your first Excel sheet
+    sheet2_path = "path/to/sheet2.xlsx"  # Update with the path to your second Excel sheet
+    output_path = "path/to/output.xlsx"  # Update with the desired output path
+    
+    calculate_delta(sheet1_path, sheet2_path, output_path)
+    print("Delta calculation completed. Results saved to", output_path)
+
+
+# CREATED WITH THE HELP OF OPEN-AI CHAT GPT: https://chat.openai.com/chat
