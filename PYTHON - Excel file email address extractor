@@ -1,0 +1,28 @@
+import pandas as pd
+import re
+
+# Replace 'input.xlsx' with the path to your Excel file
+excel_file_path = 'input.xlsx'
+
+# Read the Excel file into a DataFrame
+df = pd.read_excel(excel_file_path)
+
+# Function to extract email addresses using regular expressions
+def extract_emails(text):
+    email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+    return re.findall(email_pattern, text)
+
+# Extract email addresses from the DataFrame
+all_emails = []
+for column in df.columns:
+    if df[column].dtype == 'object':
+        emails = df[column].apply(lambda x: extract_emails(str(x)))
+        all_emails.extend([email for sublist in emails for email in sublist])
+
+# Write extracted email addresses to a text file
+output_file_path = 'extracted_emails.txt'
+with open(output_file_path, 'w') as f:
+    for email in all_emails:
+        f.write(email + '\n')
+
+print(f"Extracted {len(all_emails)} email addresses to '{output_file_path}'")
