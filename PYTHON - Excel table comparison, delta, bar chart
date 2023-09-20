@@ -1,0 +1,33 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the two Excel files into DataFrames
+file1 = "table1.xlsx"
+file2 = "table2.xlsx"
+
+df1 = pd.read_excel(file1)
+df2 = pd.read_excel(file2)
+
+# Assuming both tables have a common column for comparison, e.g., 'ID'
+common_column = 'ID'
+
+# Merge the two DataFrames to find differences
+merged_df = pd.merge(df1, df2, on=common_column, how='outer', suffixes=('_table1', '_table2'))
+
+# Calculate the differences
+merged_df['Delta'] = merged_df['Value_table2'] - merged_df['Value_table1']
+
+# Filter rows where there are differences
+delta_df = merged_df[merged_df['Delta'].notna()]
+
+# Create a bar chart to visualize the differences
+plt.figure(figsize=(10, 6))
+plt.bar(delta_df[common_column], delta_df['Delta'])
+plt.xlabel(common_column)
+plt.ylabel('Delta')
+plt.title('Delta Comparison')
+plt.xticks(rotation=90)
+plt.grid(True)
+
+# Show the bar chart
+plt.show()
