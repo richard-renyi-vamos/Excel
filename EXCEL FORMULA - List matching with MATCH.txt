@@ -1,0 +1,1 @@
+=IFERROR(INDEX('350 Customer List'!B:B, MATCH(A2, '350 Customer List'!A:A, 0)), "")
