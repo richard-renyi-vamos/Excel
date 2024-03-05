@@ -1,0 +1,5 @@
+# https://www.ablebits.com/office-addins-blog/excel-iferror-vlookup/
+
+EXAMPLE 1: IFERROR(VLOOKUP(…),"Not found")
+
+EXAMPLE 2: =IFERROR(INDEX('Lookup table'!$B$2:$B$5,MATCH(B2,'Lookup table'!$A$2:$A$5,0)), "Not found")
