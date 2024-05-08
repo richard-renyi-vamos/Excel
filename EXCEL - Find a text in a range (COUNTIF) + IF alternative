@@ -1,0 +1,1 @@
+=IF(COUNTIF(range, value)>0, value, "")
