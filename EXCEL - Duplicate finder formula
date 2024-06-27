@@ -1,0 +1,1 @@
+=IF(COUNTIF($A$2:$A$8, $A2)>1, "Duplicate", "Unique")
